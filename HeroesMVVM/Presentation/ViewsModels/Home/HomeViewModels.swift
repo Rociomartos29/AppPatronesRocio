@@ -11,18 +11,17 @@ final class HomeViewModel {
     
     var homeStatusLoad: ((SplashStatusLoad) -> Void)?
     
-    // Caso de uso
     let homeUseCase: HomeUseCaseProtocol
     
     var heroes: [HeroModel]
     
-    // Inicialización
+
     init(homeUseCase: HomeUseCaseProtocol = HomeUseCase()) {
         self.homeUseCase = homeUseCase
         self.heroes = []
     }
     
-    // Llamada para obtener el perfil de usuario
+
     func loadHero() {
         homeStatusLoad?(.loading)
         homeUseCase.getHeroes { [weak self] heroes in

@@ -10,6 +10,8 @@ import UIKit
 class LoginViewController: UIViewController {
     private var viewModel: LoginViewModel
     
+    @IBOutlet weak var recuerdameLabel: UILabel!
+    @IBOutlet weak var RecuerdameBoton: UIButton!
     @IBOutlet weak var Email: UITextField!
     @IBOutlet weak var errorEmail: UILabel!
     @IBOutlet weak var ContraseñaTextFile: UITextField!
@@ -37,12 +39,17 @@ class LoginViewController: UIViewController {
         setObservers()
     }
     
+    @IBAction func recuerdameBoton(_ sender: Any) {
+ 
+        if (sender as AnyObject).isSelected, let email = Email.text, let password = ContraseñaTextFile.text {
+               UserDefaultHelper.shared.saveUserCredentials(email: email, password: password)
+           }
+    }
     @IBAction func loginBoton(_ sender: Any) {
         viewModel.login(email: Email.text, password: ContraseñaTextFile.text)
     }
 }
 extension LoginViewController {
-    //Method to observe the view state of the viewModel
     private func setObservers() {
         viewModel.loginState = { [weak self] status in
             switch status {
@@ -52,8 +59,6 @@ extension LoginViewController {
                 
             case .loaded:
                 self?.loadingView.isHidden = true
-
-                            // Almacena las credenciales si el estado es .loaded
                             if let email = self?.Email.text, let password = self?.ContraseñaTextFile.text {
                                 UserDefaultHelper.shared.saveUserCredentials(email: email, password: password)
                             }
@@ -63,8 +68,7 @@ extension LoginViewController {
             case .showErrorEmail(let error):
                 self?.errorEmail.text = error
                 self?.errorEmail.isHidden = (error == nil || error?.isEmpty == true)
-                
-                // Show alert for incorrect email
+
                 if let error = error, !error.isEmpty {
                     self?.showAlert(message: "Email incorrecto. Introduce un email válido")
                 }
@@ -73,7 +77,6 @@ extension LoginViewController {
                 self?.errorContraseña.text = error
                 self?.errorContraseña.isHidden = (error == nil || error?.isEmpty == true)
                 
-                // Show alert for incorrect password
                 if let error = error, !error.isEmpty {
                     self?.showAlert(message: "Contraseña incorrecta")
                 }
@@ -87,7 +90,7 @@ extension LoginViewController {
     
     private func navigateToHome() {
         let nextVM = HomeViewModel(homeUseCase: HomeUseCase())
-        let nextVC = HomeTableViewController(homeViewModel: nextVM)
+        let nextVC = HViewController(homeViewModel: nextVM)
         navigationController?.setViewControllers([nextVC], animated: true)
     }
     func showAlert(message: String) {

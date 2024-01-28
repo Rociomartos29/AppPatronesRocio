@@ -83,3 +83,25 @@ final class HomeUseCase: HomeUseCaseProtocol {
         task.resume()
     }
 }
+final class HomeUseCaseFakeSuccess: HomeUseCaseProtocol {
+    func getHeroes(
+        onSuccess: @escaping ([HeroModel]) -> Void,
+        onError: @escaping (NetworkError) -> Void) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            let hero = HeroModel(id: "1", name: "Superman", description: "Man of Steel", photo: "", favorite: true)
+            onSuccess([hero])
+        }
+    }
+}
+
+final class HomeUseCaseFakeError: HomeUseCaseProtocol {
+    func getHeroes(
+        onSuccess: @escaping ([HeroModel]) -> Void,
+        onError: @escaping (NetworkError) -> Void) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            onError(.malformedURL)
+        }
+    }
+}

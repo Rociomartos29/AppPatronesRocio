@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,9 +13,11 @@
             <connections>
                 <outlet property="ContraseñaTextFile" destination="Jmy-pT-f4S" id="1Ic-GS-HmQ"/>
                 <outlet property="Email" destination="W1I-Wb-POB" id="IkS-34-5Ns"/>
+                <outlet property="RecuerdameBoton" destination="SYo-ns-xuJ" id="fL5-hi-NOV"/>
                 <outlet property="errorContraseña" destination="fBp-uh-PDC" id="6OT-T3-zoX"/>
                 <outlet property="errorEmail" destination="rbF-Oq-A8Q" id="50e-18-TBh"/>
                 <outlet property="loadingView" destination="CCW-vt-bNz" id="BSU-Ia-iAl"/>
+                <outlet property="recuerdameLabel" destination="TAU-dC-Xl6" id="GM4-fI-O8j"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -71,8 +74,27 @@
                         <action selector="loginBoton:" destination="-1" eventType="touchUpInside" id="Wgd-bp-MDR"/>
                     </connections>
                 </button>
-                <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CCW-vt-bNz">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYo-ns-xuJ">
+                    <rect key="frame" x="12" y="474" width="72" height="49"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <buttonConfiguration key="configuration" style="plain" cornerStyle="large">
+                        <imageReference key="image" image="checkmark.square.fill" catalog="system" renderingMode="template"/>
+                        <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="recuerdameBoton:" destination="-1" eventType="touchUpInside" id="61A-MG-26i"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recuerdame" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAU-dC-Xl6">
+                    <rect key="frame" x="68" y="474" width="136" height="49"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <color key="textColor" systemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view hidden="YES" alpha="0.5" contentMode="scaleToFill" id="CCW-vt-bNz">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="oII-d3-Ebk">
                             <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
@@ -90,9 +112,7 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="CCW-vt-bNz" firstAttribute="trailing" secondItem="Mfb-lx-1fg" secondAttribute="trailing" id="7ZB-cj-OGx"/>
                 <constraint firstItem="trD-CM-35K" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="CF2-7W-ICi"/>
-                <constraint firstItem="CCW-vt-bNz" firstAttribute="top" secondItem="Mfb-lx-1fg" secondAttribute="top" id="CP4-XG-PdE"/>
                 <constraint firstAttribute="trailing" secondItem="trD-CM-35K" secondAttribute="trailing" constant="12" id="PAi-VT-34S"/>
                 <constraint firstItem="trD-CM-35K" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Pkw-K2-Tgq"/>
                 <constraint firstItem="xTd-6e-98K" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QNS-wy-pJE"/>
@@ -100,9 +120,7 @@
                 <constraint firstAttribute="trailing" secondItem="xTd-6e-98K" secondAttribute="trailing" constant="20" id="b5a-HX-mZW"/>
                 <constraint firstAttribute="bottom" secondItem="Mfb-lx-1fg" secondAttribute="bottom" id="cp4-0h-wU2"/>
                 <constraint firstItem="trD-CM-35K" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ehR-t1-ZUf"/>
-                <constraint firstItem="CCW-vt-bNz" firstAttribute="leading" secondItem="Mfb-lx-1fg" secondAttribute="leading" id="hf2-jh-7Yf"/>
                 <constraint firstItem="Mfb-lx-1fg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iZI-CB-noH"/>
-                <constraint firstItem="CCW-vt-bNz" firstAttribute="bottom" secondItem="Mfb-lx-1fg" secondAttribute="bottom" id="ith-D3-oDc"/>
                 <constraint firstAttribute="bottom" secondItem="xTd-6e-98K" secondAttribute="bottom" constant="50" id="oIK-wF-QlS"/>
                 <constraint firstAttribute="trailing" secondItem="Mfb-lx-1fg" secondAttribute="trailing" id="wzf-cK-iCZ"/>
                 <constraint firstItem="Mfb-lx-1fg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zqr-Dd-2qz"/>
@@ -111,15 +129,22 @@
         </view>
     </objects>
     <resources>
+        <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
         <image name="fondo3" width="1080" height="1920"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

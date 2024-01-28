@@ -13,4 +13,12 @@ struct HeroModel: Decodable{
     let photo: String
     let favorite: Bool
 }
+struct Detalles:Decodable{
+    let id: String
+    let name: String
+    let description:String
+    let photo: String
+    let favorite: Bool
+    
+}
                         
